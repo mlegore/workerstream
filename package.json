@@ -1,6 +1,6 @@
 {
-  "name": "workerstream",
-  "version": "1.2.1",
+  "name": "workerstream-channel",
+  "version": "0.0.1",
   "description": "use HTML5 web workers with the node stream API",
   "scripts": {
     "start": "beefy demo.js:demo-bundle.js demo-worker.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/maxogden/workerstream.git"
+    "url": "git://github.com/mlegore/workerstream.git"
   },
   "author": "max ogden",
   "license": "BSD",
@@ -19,6 +19,7 @@
     "webworkify": "~0.1.0"
   },
   "dependencies": {
-    "inherits": "^2.0.1"
+    "inherits": "^2.0.1",
+    "typedarray-to-buffer": "^3.1.2"
   }
 }
