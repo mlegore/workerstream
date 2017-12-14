@@ -32,10 +32,39 @@ self.onmessage = function(event) {
 
 you can also pass in existing webworker instances
 
+## channels
+
+in your app:
+
+```js
+
+var worker = new Worker('worker.js')
+var workerStream = workerstream(worker, 'channel1')
+var workerStream2 = workerstream(worker, 'channel2')
+workerStream.on('data', function(data) {
+  console.log(data)
+})
+workerStream.on('error', function(e) { console.log('err', e)})
+workerStream.write({ hello: 'world' })
+
+workerStream2.write({ goodbye: 'world' })
+```
+
+the worker code (`worker.js` above):
+
+```
+var parentStream = ParentStream(self, 'channel1')
+workerStream.on('data', function(data) {
+  console.log(data)
+  // Outputs only { hello: 'world' } message  
+})
+
+```
+
 
 ## using with webworkify
 
-[webworkify](https://npmjs.org/package/webworkify) allows you to simply create browserified webworkers. 
+[webworkify](https://npmjs.org/package/webworkify) allows you to simply create browserified webworkers.
 
 ```js
 var WebWorkify = require('webworkify')
